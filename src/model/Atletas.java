@@ -1,14 +1,100 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package model;
+
+import java.util.Objects;
 
 /**
  *
  * @author Leonardo
  */
 public class Atletas {
+
+    private String nome;
+    private int idade;
+    private boolean sexo;
+    private String categoria;
+    private String faixa;
+
+    public Atletas() {
+    }
+
+    public Atletas(String nome, int idade, boolean sexo, String categoria, String faixa) {
+        this.nome = nome;
+        this.idade = idade;
+        this.sexo = sexo;
+        this.categoria = categoria;
+        this.faixa = faixa;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public boolean isSexo() {
+        return sexo;
+    }
+
+    public void setSexo(boolean sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getFaixa() {
+        return faixa;
+    }
+
+    public void setFaixa(String faixa) {
+        this.faixa = faixa;
+    }
+
+    @Override
+    public String toString() {
+        return "Atletas{" + "nome=" + nome + ", categoria=" + categoria + ", faixa=" + faixa + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Atletas other = (Atletas) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }
