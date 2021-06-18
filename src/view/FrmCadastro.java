@@ -40,14 +40,14 @@ public class FrmCadastro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtCategoria = new javax.swing.JTextField();
         txtFaixa = new javax.swing.JTextField();
         btCancelar = new javax.swing.JButton();
         btCadastrar = new javax.swing.JButton();
         txtSexo = new javax.swing.JTextField();
+        JBoxCategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CADASTRO");
+        setTitle("CADASTRO  ATLETAS DE JUDÔ");
 
         jLabel1.setText("Nome :");
 
@@ -73,6 +73,13 @@ public class FrmCadastro extends javax.swing.JFrame {
             }
         });
 
+        JBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBoxCategoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,10 +96,10 @@ public class FrmCadastro extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addGap(28, 28, 28)
                             .addComponent(txtFaixa))
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtCategoria))
+                            .addComponent(JBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
@@ -124,11 +131,11 @@ public class FrmCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(JBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,9 +163,9 @@ public class FrmCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O campo IDADE não pode estar vazia!");
         } else if (txtSexo.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo SEXO não pode estar vazio!");
-        } else if (txtCategoria.getText().equals("")) {
+        } /*else if (txtCategoria.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo CATEGORIA não pode estar vazia!");
-        } else if (txtFaixa.getText().equals("")){
+        } */else if (txtFaixa.getText().equals("")){
             JOptionPane.showMessageDialog(null, "O campo FAIXA não pode estar vazio!");
         } else {
             try{
@@ -166,7 +173,7 @@ public class FrmCadastro extends javax.swing.JFrame {
                 out.println(txtNome.getText());
                 out.println(txtIdade.getText());
                 out.println(txtSexo.getText());
-                out.println(txtCategoria.getText());
+               // out.println(txtCategoria.getText());
                 out.println(txtFaixa.getText());
                 out.close();
                 JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
@@ -176,8 +183,12 @@ public class FrmCadastro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
+    private void JBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBoxCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBoxCategoriaActionPerformed
+
     private JTextField[] camposAtletas() {
-        JTextField[] campos = {txtNome, txtIdade, txtCategoria, txtFaixa,};
+        JTextField[] campos = {txtNome, txtIdade, txtFaixa,};
         return campos;
     }
 
@@ -218,6 +229,7 @@ public class FrmCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> JBoxCategoria;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JLabel jLabel1;
@@ -226,7 +238,6 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtFaixa;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
