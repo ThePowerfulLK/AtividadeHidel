@@ -35,6 +35,7 @@ public class FrmMenu extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MENU");
 
         jLabel1.setText("Menu");
 
