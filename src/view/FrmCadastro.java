@@ -5,10 +5,12 @@
  */
 package view;
 
+//import dao.AtletasDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import util.Arquivo;
 
 /**
  *
@@ -33,6 +35,9 @@ public class FrmCadastro extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -43,8 +48,9 @@ public class FrmCadastro extends javax.swing.JFrame {
         txtFaixa = new javax.swing.JTextField();
         btCancelar = new javax.swing.JButton();
         btCadastrar = new javax.swing.JButton();
-        txtSexo = new javax.swing.JTextField();
         JBoxCategoria = new javax.swing.JComboBox<>();
+        JRMasculino = new javax.swing.JRadioButton();
+        JRFeminino = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CADASTRO  ATLETAS DE JUDÔ");
@@ -73,12 +79,21 @@ public class FrmCadastro extends javax.swing.JFrame {
             }
         });
 
-        JBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro até 60kg", "Meio- Leve até 66kg" }));
         JBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBoxCategoriaActionPerformed(evt);
             }
         });
+
+        JRMasculino.setText("Masculino");
+        JRMasculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JRMasculinoActionPerformed(evt);
+            }
+        });
+
+        JRFeminino.setText("Feminino");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,7 +122,10 @@ public class FrmCadastro extends javax.swing.JFrame {
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(JRMasculino)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(JRFeminino))))))
                 .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,8 +148,9 @@ public class FrmCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                    .addComponent(JRMasculino)
+                    .addComponent(JRFeminino))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(JBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -161,31 +180,40 @@ public class FrmCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O  campo NOME não pode estar vazio!");
         } else if (txtIdade.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo IDADE não pode estar vazia!");
-        } else if (txtSexo.getText().equals("")) {
+        } else if (JRMasculino.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo SEXO não pode estar vazio!");
         } /*else if (txtCategoria.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo CATEGORIA não pode estar vazia!");
-        } */else if (txtFaixa.getText().equals("")){
+        } */ else if (txtFaixa.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo FAIXA não pode estar vazio!");
         } else {
-            try{
-                PrintWriter out = new PrintWriter(txtNome.getText() + ".txt");
-                out.println(txtNome.getText());
-                out.println(txtIdade.getText());
-                out.println(txtSexo.getText());
-               // out.println(txtCategoria.getText());
-                out.println(txtFaixa.getText());
-                out.close();
-                JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
-            } catch (IOException erro){
-                JOptionPane.showMessageDialog(null, "Erro ao gravar arquivo!!" + erro);
-            }
+            Arquivo arq = new Arquivo();
+            
+            arq.Write("Atletas.txt", "Nome: " + txtNome.getText());
+            arq.Write("Atletas.txt","Idade:" + txtIdade.getText());
+           // arq.Write("Atletas.txt", "Sexo: " + txtSexo.getText());
+            arq.Write("Atletas.txt" , "--------\n");
+            
+            //  PrintWriter out = new PrintWriter(txtNome.getText() + ".txt");
+            // out.println("Nome: " + txtNome.getText());
+            // out.println("Idade: " + txtIdade.getText());
+            // out.println("Sexo: " + txtSexo.getText());
+            // out.println(txtCategoria.getText());
+            // out.println("Faixa: " + txtFaixa.getText());
+            // out.close();
+            JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void JBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBoxCategoriaActionPerformed
-        // TODO add your handling code here:
+      //  if(txtSexo == "Feminino"){
+            
+    //    }
     }//GEN-LAST:event_JBoxCategoriaActionPerformed
+
+    private void JRMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRMasculinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JRMasculinoActionPerformed
 
     private JTextField[] camposAtletas() {
         JTextField[] campos = {txtNome, txtIdade, txtFaixa,};
@@ -230,8 +258,13 @@ public class FrmCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JBoxCategoria;
+    private javax.swing.JRadioButton JRFeminino;
+    private javax.swing.JRadioButton JRMasculino;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btCancelar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -241,6 +274,5 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField txtFaixa;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSexo;
     // End of variables declaration//GEN-END:variables
 }

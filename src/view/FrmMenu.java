@@ -56,6 +56,11 @@ public class FrmMenu extends javax.swing.JFrame {
         btEditar.setText("Editar");
 
         btPesquisar.setText("Pesquisar");
+        btPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisarActionPerformed(evt);
+            }
+        });
 
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +111,8 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,6 +132,12 @@ public class FrmMenu extends javax.swing.JFrame {
         remover.setVisible(true);
         remover.setLocationRelativeTo(null);
     }//GEN-LAST:event_btRemoverActionPerformed
+
+    private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
+       FrmPesquisa pesquisa =  new FrmPesquisa();
+       pesquisa.setVisible(true);
+       pesquisa.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btPesquisarActionPerformed
 
         
     /**

@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package util;
 
 /**
  *
  * @author Leonardo
  */
-public class MainClass {
-    public static void main(String[] args) {
-        String arquivo = "Atletas.txt";
-        
-        
-    }
+public class funcao {
+    
 }

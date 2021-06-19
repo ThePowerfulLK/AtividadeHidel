@@ -15,16 +15,19 @@ public class Atletas {
     private boolean sexo;
     private String categoria;
     private String faixa;
+    private float peso, altura;
 
     public Atletas() {
     }
-
-    public Atletas(String nome, int idade, boolean sexo, String categoria, String faixa) {
+    
+    public Atletas(String nome, int idade, boolean sexo, String categoria, String faixa, float peso, float altura) {
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
         this.categoria = categoria;
         this.faixa = faixa;
+        this.peso = peso;
+        this.altura = altura;
     }
 
     public String getNome() {
@@ -94,6 +97,22 @@ public class Atletas {
             return false;
         }
         return true;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    public float getAltura() {
+        return altura;
+    }
+
+    public void setAltura(float altura) {
+        this.altura = altura;
     }
     
     
