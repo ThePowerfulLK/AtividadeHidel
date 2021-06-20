@@ -13,7 +13,6 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import model.Item;
 import util.Arquivo;
 
 /**
@@ -225,21 +224,21 @@ public class FrmCadastro extends javax.swing.JFrame {
         } else {
             Arquivo arq = new Arquivo();
 
-            arq.Write("Atletas.txt", "Nome: " + txtNome.getText());
-            arq.Write("Atletas.txt", "Idade: " + txtIdade.getText());
-            arq.Write("Atletas.txt", "Peso: " + txtPeso.getText());
-            arq.Write("Atletas.txt", "Altura: " + txtAltura.getText());
+            arq.Write("Atletas.dat", "Nome: " + txtNome.getText());
+            arq.Write("Atletas.dat", "Idade: " + txtIdade.getText());
+            arq.Write("Atletas.dat", "Peso: " + txtPeso.getText());
+            arq.Write("Atletas.dat", "Altura: " + txtAltura.getText());
             if (rbMasculino.isSelected()) {
-                arq.Write("Atletas.txt", "Sexo: " + rbMasculino.getText());
+                arq.Write("Atletas.dat", "Sexo: " + rbMasculino.getText());
             } else if (rbFeminino.isSelected()){
-                arq.Write("Atletas.txt", "Sexo: " + rbFeminino.getText());
+                arq.Write("Atletas.dat", "Sexo: " + rbFeminino.getText());
             }else {
                JOptionPane.showMessageDialog(null, "Selecione um SEXO!");
                
             }
-            arq.Write("Atletas.txt", "Faixa: " + txtFaixa.getText());
+            arq.Write("Atletas.dat", "Faixa: " + txtFaixa.getText());
             
-            arq.Write("Atletas.txt", "--------\n");
+            arq.Write("Atletas.dat", "--------\n");
 
             JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
         }

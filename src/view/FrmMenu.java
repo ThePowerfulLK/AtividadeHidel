@@ -16,8 +16,10 @@ public class FrmMenu extends javax.swing.JFrame {
      */
     public FrmMenu() {
         initComponents();
-    }
 
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +31,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btAdicionar = new javax.swing.JButton();
-        btRemover = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
         btPesquisar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MENU");
@@ -45,15 +46,6 @@ public class FrmMenu extends javax.swing.JFrame {
                 btAdicionarActionPerformed(evt);
             }
         });
-
-        btRemover.setText("Remover");
-        btRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRemoverActionPerformed(evt);
-            }
-        });
-
-        btEditar.setText("Editar");
 
         btPesquisar.setText("Pesquisar");
         btPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +61,8 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Bem vindo Noob Idoso!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,8 +72,6 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btPesquisar)
-                            .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(102, 102, 102)
@@ -87,26 +79,28 @@ public class FrmMenu extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(70, 70, 70)
                                     .addComponent(btAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 82, Short.MAX_VALUE))
+                        .addGap(0, 73, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btSair)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btAdicionar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btRemover)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btPesquisar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(btSair)
                 .addContainerGap())
         );
@@ -126,12 +120,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
        System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
-
-    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        FrmRemover remover =  new FrmRemover();
-        remover.setVisible(true);
-        remover.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btRemoverActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
        FrmPesquisa pesquisa =  new FrmPesquisa();
@@ -178,10 +166,9 @@ public class FrmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btPesquisar;
-    private javax.swing.JButton btRemover;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
