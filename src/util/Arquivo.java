@@ -34,7 +34,7 @@ public class Arquivo {
                 saida = new BufferedReader(new FileReader(Caminho));
                 String linha = saida.readLine();
                 while (linha != null) {
-//                    System.out.println(linha);
+                    System.out.println(linha);
                     atletas.add(new Atletas(linha.split(";")));
                     linha = saida.readLine();
                 }

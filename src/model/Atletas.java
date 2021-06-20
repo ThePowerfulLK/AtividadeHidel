@@ -27,6 +27,7 @@ public class Atletas {
         this.faixa = faixa;
         this.peso = peso;
         this.altura = altura;
+        
     }
 
     public Atletas(String[] argumentos) {
@@ -37,12 +38,13 @@ public class Atletas {
         this.faixa = argumentos[5];
         this.peso = Float.parseFloat(argumentos[2]);
         this.altura = Float.parseFloat(argumentos[3]);
+        this.pais = argumentos[6];
     }
 
     public String[] buscaAtletas() {
         String[] atletas = {this.nome, String.valueOf(this.idade),
             String.valueOf(this.peso), String.valueOf(this.altura),
-            String.valueOf(this.sexo), this.faixa, this.pais, this.categoria,};
+            String.valueOf(this.getSexo()), this.faixa, this.pais, this.categoria,};
         return atletas;
     }
 
@@ -64,6 +66,9 @@ public class Atletas {
 
     public boolean isSexo() {
         return sexo;
+    }
+    public String getSexo(){
+        return sexo ? "Masculino" : "Feminino";
     }
 
     public void setSexo(boolean sexo) {

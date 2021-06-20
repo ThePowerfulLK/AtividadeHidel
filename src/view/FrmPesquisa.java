@@ -8,7 +8,10 @@ package view;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
+import model.Atletas;
+import util.Arquivo;
 
 /**
  *
@@ -34,6 +37,8 @@ public class FrmPesquisa extends javax.swing.JFrame {
 
         btSair = new javax.swing.JButton();
         btBusca = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtBusca = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,27 +56,31 @@ public class FrmPesquisa extends javax.swing.JFrame {
             }
         });
 
+        txtBusca.setColumns(20);
+        txtBusca.setRows(5);
+        jScrollPane2.setViewportView(txtBusca);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 222, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btSair)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btBusca)
-                        .addGap(206, 206, 206))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btBusca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btSair)
+                .addContainerGap())
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(btBusca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(btSair)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btSair)
+                    .addComponent(btBusca))
                 .addContainerGap())
         );
 
@@ -84,13 +93,17 @@ public class FrmPesquisa extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscaActionPerformed
-        try{
-            FrmCadastro form = new FrmCadastro();
-            BufferedReader br = new BufferedReader(new FileReader("Atletas.dat"));
-            br.readLine();
-        } catch(IOException erro){
-            JOptionPane.showMessageDialog(null, "Erro ao ler arquivo!");
-        }
+        Arquivo arquivo =  new Arquivo();
+        String argumentos = "";
+        
+        Atletas[] at = arquivo.Read("Atletas.dat");
+        for(Atletas atleta : at){
+            String aux1 =  Arrays.toString(atleta.buscaAtletas()).concat("\n");
+            argumentos = argumentos.concat(aux1);
+            System.out.println(argumentos);           
+        }    
+        txtBusca.setText(argumentos);
+        System.out.println(argumentos);     
     }//GEN-LAST:event_btBuscaActionPerformed
     private void JTable(java.awt.event.ActionListener evt) {
 
@@ -135,5 +148,7 @@ public class FrmPesquisa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBusca;
     private javax.swing.JButton btSair;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea txtBusca;
     // End of variables declaration//GEN-END:variables
 }

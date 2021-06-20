@@ -239,8 +239,8 @@ public class FrmCadastro extends javax.swing.JFrame {
             DecimalFormat df = new DecimalFormat("##.##");
             argumentos = argumentos.concat(txtNome.getText() + ";");
             argumentos = argumentos.concat(txtIdade.getText() + ";");
-            argumentos = argumentos.concat(txtPeso.getText() + ";");
-            argumentos = argumentos.concat(txtAltura.getText() + ";");
+            argumentos = argumentos.concat(String.valueOf(tratarPeso())+ ";" );
+            argumentos = argumentos.concat(String.valueOf(tratarAltura())+  ";");
 
 //            arq.Write("Atletas.dat", txtNome.getText() + ":" + txtIdade.getText() + ":" + txtPeso.getText() + ":" + txtAltura.getText());
             // arq.Write("Atletas.dat", "Idade: " + txtIdade.getText());
@@ -255,31 +255,33 @@ public class FrmCadastro extends javax.swing.JFrame {
             }
             argumentos = argumentos.concat(txtFaixa.getText() + ";");
             argumentos = argumentos.concat(txtPais.getText() + ";");
-            if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) <= 60 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) <= 48) {
+            if (rbMasculino.isSelected() && tratarPeso() <= 60 || rbFeminino.isSelected() && tratarPeso() <= 48) {
                 argumentos = argumentos.concat("Ligeiro" );
                 JOptionPane.showMessageDialog(null, "Sua categoria é: LIGEIRO");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 61 && Integer.parseInt(txtPeso.getText()) <= 66 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 49 && Integer.parseInt(txtPeso.getText()) <= 52) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 61 && tratarPeso() <= 66 || rbFeminino.isSelected() && tratarPeso() >= 49 && tratarPeso() <= 52) {
                 argumentos = argumentos.concat("Meio - Leve");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - LEVE");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 67 && Integer.parseInt(txtPeso.getText()) <= 73 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 53 && Integer.parseInt(txtPeso.getText()) <= 57) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 67 && tratarPeso() <= 73 || rbFeminino.isSelected() && tratarPeso() >= 53 && tratarPeso() <= 57) {
                 argumentos = argumentos.concat("Leve");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: LEVE");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 74 && Integer.parseInt(txtPeso.getText()) <= 81 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 58 && Integer.parseInt(txtPeso.getText()) <= 63) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 74 && tratarPeso() <= 81 || rbFeminino.isSelected() && tratarPeso() >= 58 && tratarPeso() <= 63) {
                 argumentos = argumentos.concat("Meio - Médio" );
                 JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - MÉDIO");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 82 && Integer.parseInt(txtPeso.getText()) <= 90 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 64 && Integer.parseInt(txtPeso.getText()) <= 70) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 82 && tratarPeso() <= 90 || rbFeminino.isSelected() && tratarPeso() >= 64 && tratarPeso() <= 70) {
                 argumentos = argumentos.concat("Medio" );
                 JOptionPane.showMessageDialog(null, "Sua categoria é: MÉDIO");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 91 && Integer.parseInt(txtPeso.getText()) <= 100 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 71 && Integer.parseInt(txtPeso.getText()) <= 78) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 91 && tratarPeso() <= 100 || rbFeminino.isSelected() && tratarPeso() >= 71 && tratarPeso() <= 78) {
                argumentos = argumentos.concat("Meio - Pesado");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - PESADO");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 101 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) > 79) {
+            } else if (rbMasculino.isSelected() && tratarPeso() >= 101 || rbFeminino.isSelected() && tratarPeso() > 79) {
                 argumentos = argumentos.concat("Pesado");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: PESADO");
             }
             arq.Write("Atletas.dat", argumentos);
 
             JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
+            
+           
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
@@ -298,6 +300,14 @@ public class FrmCadastro extends javax.swing.JFrame {
     private JTextField[] camposAtletas() {
         JTextField[] campos = {txtNome, txtIdade, txtFaixa,};
         return campos;
+    }
+    
+    private float tratarPeso(){
+        return Float.parseFloat(txtPeso.getText().replace(",", "."));
+    }
+    
+    private float tratarAltura(){
+        return Float.parseFloat(txtAltura.getText().replace(",", "."));
     }
 
     /**
