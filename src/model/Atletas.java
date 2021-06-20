@@ -1,5 +1,3 @@
-
-
 package model;
 
 import java.util.Objects;
@@ -15,11 +13,12 @@ public class Atletas {
     private boolean sexo;
     private String categoria;
     private String faixa;
+    private String pais;
     private float peso, altura;
 
     public Atletas() {
     }
-    
+
     public Atletas(String nome, int idade, boolean sexo, String categoria, String faixa, float peso, float altura) {
         this.nome = nome;
         this.idade = idade;
@@ -28,6 +27,23 @@ public class Atletas {
         this.faixa = faixa;
         this.peso = peso;
         this.altura = altura;
+    }
+
+    public Atletas(String[] argumentos) {
+        this.nome = argumentos[0];
+        this.idade = Integer.parseInt(argumentos[1]);
+        this.sexo = argumentos[4].equals("Masculino");
+        this.categoria = argumentos[7];
+        this.faixa = argumentos[5];
+        this.peso = Float.parseFloat(argumentos[2]);
+        this.altura = Float.parseFloat(argumentos[3]);
+    }
+
+    public String[] buscaAtletas() {
+        String[] atletas = {this.nome, String.valueOf(this.idade),
+            String.valueOf(this.peso), String.valueOf(this.altura),
+            String.valueOf(this.sexo), this.faixa, this.pais, this.categoria,};
+        return atletas;
     }
 
     public String getNome() {
@@ -114,6 +130,13 @@ public class Atletas {
     public void setAltura(float altura) {
         this.altura = altura;
     }
-    
-    
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
 }

@@ -18,8 +18,7 @@ public class FrmMenu extends javax.swing.JFrame {
         initComponents();
 
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,23 +110,22 @@ public class FrmMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-       FrmCadastro cadastro = new FrmCadastro();
-             
-       cadastro.setVisible(true);
-       cadastro.setLocationRelativeTo(null);
+        FrmCadastro cadastro = new FrmCadastro();
+
+        cadastro.setVisible(true);
+        cadastro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btAdicionarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisarActionPerformed
-       FrmPesquisa pesquisa =  new FrmPesquisa();
-       pesquisa.setVisible(true);
-       pesquisa.setLocationRelativeTo(null);
+        FrmPesquisa pesquisa = new FrmPesquisa();
+        pesquisa.setVisible(true);
+        pesquisa.setLocationRelativeTo(null);
     }//GEN-LAST:event_btPesquisarActionPerformed
 
-        
     /**
      * @param args the command line arguments
      */
