@@ -59,6 +59,7 @@ public class FrmCadastro extends javax.swing.JFrame {
         txtPeso = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtAltura = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CADASTRO  ATLETAS DE JUDÔ");
@@ -111,6 +112,8 @@ public class FrmCadastro extends javax.swing.JFrame {
 
         jLabel7.setText("Altura :");
 
+        jLabel8.setText("*Obrigatório preechimento em todos os campos!*");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,6 +127,7 @@ public class FrmCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
                     .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -180,7 +184,9 @@ public class FrmCadastro extends javax.swing.JFrame {
                     .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastrar)
                     .addComponent(btCancelar))
@@ -207,7 +213,7 @@ public class FrmCadastro extends javax.swing.JFrame {
         } else if (rbFeminino.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo SEXO não pode estar vazio!");
         } else if (rbFeminino.isSelected() && rbMasculino.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Escolha apenas um SEXO! Os dois não dá né brother!");
+            JOptionPane.showMessageDialog(null, "Escolha apenas um SEXO!");
         } else if (txtAltura.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo ALTURA não pode estar vazio!");
         } else if (txtPeso.getText().equals("")) {
@@ -225,10 +231,13 @@ public class FrmCadastro extends javax.swing.JFrame {
             arq.Write("Atletas.txt", "Altura: " + txtAltura.getText());
             if (rbMasculino.isSelected()) {
                 arq.Write("Atletas.txt", "Sexo: " + rbMasculino.getText());
-            } else {
+            } else if (rbFeminino.isSelected()){
                 arq.Write("Atletas.txt", "Sexo: " + rbFeminino.getText());
+            }else {
+               JOptionPane.showMessageDialog(null, "Selecione um SEXO!");
+               
             }
-            arq.Write("Atletas.txt", "Faixa:" + txtFaixa.getText());
+            arq.Write("Atletas.txt", "Faixa: " + txtFaixa.getText());
             
             arq.Write("Atletas.txt", "--------\n");
 
@@ -302,6 +311,7 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JRadioButton rbFeminino;
     private javax.swing.JRadioButton rbMasculino;

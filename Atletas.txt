@@ -1,8 +1,4 @@
-Nome: Leonardo Luiz
-Idade:21
-Peso: 73,8
-Altura: 1.83
-Sexo: Masculino
-Faixa:Roxa
---------
-
+Nome: asdad
+Idade: asdad
+Peso: asdads
+Altura: asdad
