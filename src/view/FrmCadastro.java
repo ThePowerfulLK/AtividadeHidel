@@ -9,6 +9,7 @@ package view;
 import java.awt.FlowLayout;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -47,7 +48,6 @@ public class FrmCadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtIdade = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtFaixa = new javax.swing.JTextField();
         btCancelar = new javax.swing.JButton();
@@ -68,8 +68,6 @@ public class FrmCadastro extends javax.swing.JFrame {
         jLabel2.setText("Idade :");
 
         jLabel3.setText("Sexo :");
-
-        jLabel4.setText("Categoria :");
 
         jLabel5.setText("Faixa : ");
 
@@ -124,34 +122,37 @@ public class FrmCadastro extends javax.swing.JFrame {
                 .addComponent(btCancelar)
                 .addGap(11, 11, 11))
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtIdade)
-                                    .addComponent(txtPeso)
-                                    .addComponent(txtAltura)
-                                    .addComponent(rbMasculino))
-                                .addGap(18, 18, 18)
-                                .addComponent(rbFeminino)))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtIdade)
+                                            .addComponent(txtPeso)
+                                            .addComponent(txtAltura)
+                                            .addComponent(rbMasculino))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rbFeminino))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel8)))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,10 +183,8 @@ public class FrmCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btCadastrar)
                     .addComponent(btCancelar))
@@ -223,21 +222,42 @@ public class FrmCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O campo FAIXA não pode estar vazio!");
         } else {
             Arquivo arq = new Arquivo();
-
+            DecimalFormat df = new DecimalFormat("##.##");
             arq.Write("Atletas.dat", "Nome: " + txtNome.getText());
             arq.Write("Atletas.dat", "Idade: " + txtIdade.getText());
             arq.Write("Atletas.dat", "Peso: " + txtPeso.getText());
             arq.Write("Atletas.dat", "Altura: " + txtAltura.getText());
             if (rbMasculino.isSelected()) {
                 arq.Write("Atletas.dat", "Sexo: " + rbMasculino.getText());
-            } else if (rbFeminino.isSelected()){
+            } else if (rbFeminino.isSelected()) {
                 arq.Write("Atletas.dat", "Sexo: " + rbFeminino.getText());
-            }else {
-               JOptionPane.showMessageDialog(null, "Selecione um SEXO!");
-               
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione um SEXO!");
             }
             arq.Write("Atletas.dat", "Faixa: " + txtFaixa.getText());
-            
+            if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) <= 60 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) <= 48) {
+                arq.Write("Atletas.dat", "Categoria: Ligeiro");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: LIGEIRO");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 61 && Integer.parseInt(txtPeso.getText()) <= 66 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 49 && Integer.parseInt(txtPeso.getText()) <= 52) {
+                arq.Write("Atletas.dat", "Categoria: Meio - Leve");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - LEVE");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 67 && Integer.parseInt(txtPeso.getText()) <= 73 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 53 && Integer.parseInt(txtPeso.getText()) <= 57) {
+                arq.Write("Atletas.dat", "Categoria: Leve");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: LEVE");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 74 && Integer.parseInt(txtPeso.getText()) <= 81 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 58 && Integer.parseInt(txtPeso.getText()) <= 63) {
+                arq.Write("Atletas.dat", "Categoria: Meio - Médio");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - MÉDIO");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 82 && Integer.parseInt(txtPeso.getText()) <= 90 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 64 && Integer.parseInt(txtPeso.getText()) <= 70) {
+                arq.Write("Atletas.dat", "Categoria: Médio");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: MÉDIO");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 91 && Integer.parseInt(txtPeso.getText()) <= 100 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 71 && Integer.parseInt(txtPeso.getText()) <= 78) {
+                arq.Write("Atletas.dat", "Categoria: Meio - Pesado");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - PESADO");
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 101 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) > 79 ) {
+                arq.Write("Atletas.dat", "Categoria: Pesado");
+                JOptionPane.showMessageDialog(null, "Sua categoria é: PESADO");
+            }
+
             arq.Write("Atletas.dat", "--------\n");
 
             JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
@@ -306,7 +326,6 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
