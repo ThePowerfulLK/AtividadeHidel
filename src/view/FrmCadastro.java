@@ -6,10 +6,14 @@
 package view;
 
 //import dao.AtletasDAO;
+import java.awt.FlowLayout;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.Item;
 import util.Arquivo;
 
 /**
@@ -23,6 +27,7 @@ public class FrmCadastro extends javax.swing.JFrame {
      */
     public FrmCadastro() {
         initComponents();
+
     }
 
     /**
@@ -48,9 +53,12 @@ public class FrmCadastro extends javax.swing.JFrame {
         txtFaixa = new javax.swing.JTextField();
         btCancelar = new javax.swing.JButton();
         btCadastrar = new javax.swing.JButton();
-        JBoxCategoria = new javax.swing.JComboBox<>();
-        JRMasculino = new javax.swing.JRadioButton();
-        JRFeminino = new javax.swing.JRadioButton();
+        rbMasculino = new javax.swing.JRadioButton();
+        rbFeminino = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtPeso = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtAltura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CADASTRO  ATLETAS DE JUDÔ");
@@ -79,60 +87,68 @@ public class FrmCadastro extends javax.swing.JFrame {
             }
         });
 
-        JBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ligeiro até 60kg", "Meio- Leve até 66kg" }));
-        JBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+        rbMasculino.setText("Masculino");
+        rbMasculino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBoxCategoriaActionPerformed(evt);
+                rbMasculinoActionPerformed(evt);
             }
         });
 
-        JRMasculino.setText("Masculino");
-        JRMasculino.addActionListener(new java.awt.event.ActionListener() {
+        rbFeminino.setText("Feminino");
+        rbFeminino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JRMasculinoActionPerformed(evt);
+                rbFemininoActionPerformed(evt);
             }
         });
 
-        JRFeminino.setText("Feminino");
+        jLabel6.setText("Peso :");
+
+        txtPeso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesoActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Altura :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(28, 28, 28)
-                            .addComponent(txtFaixa))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(JBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3))
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(JRMasculino)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(JRFeminino))))))
-                .addContainerGap(85, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btCancelar)
-                .addContainerGap())
+                .addGap(11, 11, 11))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtIdade)
+                                    .addComponent(txtPeso)
+                                    .addComponent(txtAltura)
+                                    .addComponent(rbMasculino))
+                                .addGap(18, 18, 18)
+                                .addComponent(rbFeminino)))))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,24 +161,30 @@ public class FrmCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(JRMasculino)
-                    .addComponent(JRFeminino))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(rbMasculino)
+                    .addComponent(rbFeminino))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtFaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancelar)
-                    .addComponent(btCadastrar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btCadastrar)
+                    .addComponent(btCancelar))
+                .addContainerGap())
         );
 
         pack();
@@ -180,40 +202,51 @@ public class FrmCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O  campo NOME não pode estar vazio!");
         } else if (txtIdade.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo IDADE não pode estar vazia!");
-        } else if (JRMasculino.getText().equals("")) {
+        } else if (rbMasculino.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo SEXO não pode estar vazio!");
+        } else if (rbFeminino.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo SEXO não pode estar vazio!");
+        } else if (rbFeminino.isSelected() && rbMasculino.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Escolha apenas um SEXO! Os dois não dá né brother!");
+        } else if (txtAltura.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo ALTURA não pode estar vazio!");
+        } else if (txtPeso.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo PESO não pode estar vazio!");
         } /*else if (txtCategoria.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo CATEGORIA não pode estar vazia!");
         } */ else if (txtFaixa.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo FAIXA não pode estar vazio!");
         } else {
             Arquivo arq = new Arquivo();
-            
+
             arq.Write("Atletas.txt", "Nome: " + txtNome.getText());
-            arq.Write("Atletas.txt","Idade:" + txtIdade.getText());
-           // arq.Write("Atletas.txt", "Sexo: " + txtSexo.getText());
-            arq.Write("Atletas.txt" , "--------\n");
+            arq.Write("Atletas.txt", "Idade: " + txtIdade.getText());
+            arq.Write("Atletas.txt", "Peso: " + txtPeso.getText());
+            arq.Write("Atletas.txt", "Altura: " + txtAltura.getText());
+            if (rbMasculino.isSelected()) {
+                arq.Write("Atletas.txt", "Sexo: " + rbMasculino.getText());
+            } else {
+                arq.Write("Atletas.txt", "Sexo: " + rbFeminino.getText());
+            }
+            arq.Write("Atletas.txt", "Faixa:" + txtFaixa.getText());
             
-            //  PrintWriter out = new PrintWriter(txtNome.getText() + ".txt");
-            // out.println("Nome: " + txtNome.getText());
-            // out.println("Idade: " + txtIdade.getText());
-            // out.println("Sexo: " + txtSexo.getText());
-            // out.println(txtCategoria.getText());
-            // out.println("Faixa: " + txtFaixa.getText());
-            // out.close();
+            arq.Write("Atletas.txt", "--------\n");
+
             JOptionPane.showMessageDialog(null, "Arquivo Gravado com Sucesso!!");
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
-    private void JBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBoxCategoriaActionPerformed
-      //  if(txtSexo == "Feminino"){
-            
-    //    }
-    }//GEN-LAST:event_JBoxCategoriaActionPerformed
-
-    private void JRMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRMasculinoActionPerformed
+    private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JRMasculinoActionPerformed
+    }//GEN-LAST:event_rbMasculinoActionPerformed
+
+    private void rbFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFemininoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbFemininoActionPerformed
+
+    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesoActionPerformed
 
     private JTextField[] camposAtletas() {
         JTextField[] campos = {txtNome, txtIdade, txtFaixa,};
@@ -257,9 +290,6 @@ public class FrmCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JBoxCategoria;
-    private javax.swing.JRadioButton JRFeminino;
-    private javax.swing.JRadioButton JRMasculino;
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btCancelar;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -270,9 +300,15 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JRadioButton rbFeminino;
+    private javax.swing.JRadioButton rbMasculino;
+    private javax.swing.JTextField txtAltura;
     private javax.swing.JTextField txtFaixa;
     private javax.swing.JTextField txtIdade;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
 }

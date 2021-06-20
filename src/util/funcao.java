@@ -5,10 +5,16 @@
  */
 package util;
 
+import model.Atletas;
+
 /**
  *
  * @author Leonardo
  */
 public class funcao {
+    Atletas atletas = new Atletas();
     
+    public static void Categoria(){
+        
+    }
 }
