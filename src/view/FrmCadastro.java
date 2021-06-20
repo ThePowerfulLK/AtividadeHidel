@@ -216,9 +216,7 @@ public class FrmCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O campo ALTURA não pode estar vazio!");
         } else if (txtPeso.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo PESO não pode estar vazio!");
-        } /*else if (txtCategoria.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo CATEGORIA não pode estar vazia!");
-        } */ else if (txtFaixa.getText().equals("")) {
+        } else if (txtFaixa.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo FAIXA não pode estar vazio!");
         } else {
             Arquivo arq = new Arquivo();
@@ -253,7 +251,7 @@ public class FrmCadastro extends javax.swing.JFrame {
             } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 91 && Integer.parseInt(txtPeso.getText()) <= 100 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 71 && Integer.parseInt(txtPeso.getText()) <= 78) {
                 arq.Write("Atletas.dat", "Categoria: Meio - Pesado");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: MEIO - PESADO");
-            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 101 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) > 79 ) {
+            } else if (rbMasculino.isSelected() && Integer.parseInt(txtPeso.getText()) >= 101 || rbFeminino.isSelected() && Integer.parseInt(txtPeso.getText()) > 79) {
                 arq.Write("Atletas.dat", "Categoria: Pesado");
                 JOptionPane.showMessageDialog(null, "Sua categoria é: PESADO");
             }
