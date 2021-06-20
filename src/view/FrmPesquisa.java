@@ -12,6 +12,7 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 import model.Atletas;
 import util.Arquivo;
+import util.Ordenação;
 
 /**
  *
@@ -39,6 +40,10 @@ public class FrmPesquisa extends javax.swing.JFrame {
         btBusca = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtBusca = new javax.swing.JTextArea();
+        btBuubleSort = new javax.swing.JButton();
+        btQuickSort = new javax.swing.JButton();
+        btSelectionSort = new javax.swing.JButton();
+        btInsertionSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,27 +65,72 @@ public class FrmPesquisa extends javax.swing.JFrame {
         txtBusca.setRows(5);
         jScrollPane2.setViewportView(txtBusca);
 
+        btBuubleSort.setText("BuubleSort");
+        btBuubleSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuubleSortActionPerformed(evt);
+            }
+        });
+
+        btQuickSort.setText("QuickSort");
+        btQuickSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btQuickSortActionPerformed(evt);
+            }
+        });
+
+        btSelectionSort.setText("SelectionSort");
+        btSelectionSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelectionSortActionPerformed(evt);
+            }
+        });
+
+        btInsertionSort.setText("Insertion Sort");
+        btInsertionSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInsertionSortActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btBusca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btSair)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btQuickSort, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btSelectionSort)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addComponent(btBusca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSair))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btBuubleSort)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btInsertionSort)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btBuubleSort)
+                    .addComponent(btInsertionSort))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSair)
-                    .addComponent(btBusca))
+                    .addComponent(btBusca)
+                    .addComponent(btQuickSort)
+                    .addComponent(btSelectionSort))
                 .addContainerGap())
         );
 
@@ -105,6 +155,73 @@ public class FrmPesquisa extends javax.swing.JFrame {
         txtBusca.setText(argumentos);
         System.out.println(argumentos);     
     }//GEN-LAST:event_btBuscaActionPerformed
+
+    private void btBuubleSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuubleSortActionPerformed
+       Ordenação ordem = new Ordenação();
+        Arquivo arquivo =  new Arquivo();
+        String aux = "";
+       
+       Atletas[] at = arquivo.Read("Atletas.dat");
+       
+        for(Atletas atleta : ordem.buubleSort(at)){
+            String aux1 =  Arrays.toString(atleta.buscaAtletas()).concat("\n");
+            aux = aux.concat(aux1);
+            System.out.println(aux);           
+        }    
+        txtBusca.setText(aux);
+        System.out.println(aux);
+       
+    }//GEN-LAST:event_btBuubleSortActionPerformed
+
+    private void btQuickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuickSortActionPerformed
+        Ordenação ordem =  new Ordenação();
+        Arquivo arquivo = new Arquivo();
+        String aux = "";
+        
+        Atletas[] at = arquivo.Read("Atletas.dat");
+       
+        for(Atletas atleta : ordem.quicksort(at, 0, at.length)){
+            String aux1 =  Arrays.toString(atleta.buscaAtletas()).concat("\n");
+            aux = aux.concat(aux1);
+            System.out.println(aux);           
+        }    
+        txtBusca.setText(aux);
+        System.out.println(aux);               
+    }//GEN-LAST:event_btQuickSortActionPerformed
+
+    private void btInsertionSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInsertionSortActionPerformed
+        Ordenação ordem = new Ordenação();
+        Arquivo arquivo =  new Arquivo();
+        String aux = "";
+       
+       Atletas[] at = arquivo.Read("Atletas.dat");
+       
+        for(Atletas atleta : ordem.insertionSort(at)){
+            String aux1 =  Arrays.toString(atleta.buscaAtletas()).concat("\n");
+            aux = aux.concat(aux1);
+            System.out.println(aux);           
+        }    
+        txtBusca.setText(aux);
+        System.out.println(aux);
+       
+    }//GEN-LAST:event_btInsertionSortActionPerformed
+
+    private void btSelectionSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelectionSortActionPerformed
+        Ordenação ordem = new Ordenação();
+        Arquivo arquivo =  new Arquivo();
+        String aux = "";
+       
+       Atletas[] at = arquivo.Read("Atletas.dat");
+       
+        for(Atletas atleta : ordem.SelectionSort(at, at.length)){
+            String aux1 =  Arrays.toString(atleta.buscaAtletas()).concat("\n");
+            aux = aux.concat(aux1);
+            System.out.println(aux);           
+        }    
+        txtBusca.setText(aux);
+        System.out.println(aux);
+       
+    }//GEN-LAST:event_btSelectionSortActionPerformed
     private void JTable(java.awt.event.ActionListener evt) {
 
      //   JTable.getModel();
@@ -147,7 +264,11 @@ public class FrmPesquisa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBusca;
+    private javax.swing.JButton btBuubleSort;
+    private javax.swing.JButton btInsertionSort;
+    private javax.swing.JButton btQuickSort;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btSelectionSort;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtBusca;
     // End of variables declaration//GEN-END:variables

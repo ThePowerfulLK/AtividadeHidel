@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public class Atletas {
 
+    private int id;
     private String nome;
     private int idade;
     private boolean sexo;
@@ -27,11 +28,12 @@ public class Atletas {
         this.faixa = faixa;
         this.peso = peso;
         this.altura = altura;
-        
+
     }
 
     public Atletas(String[] argumentos) {
         this.nome = argumentos[0];
+        this.id = nome.hashCode();
         this.idade = Integer.parseInt(argumentos[1]);
         this.sexo = argumentos[4].equals("Masculino");
         this.categoria = argumentos[7];
@@ -42,7 +44,7 @@ public class Atletas {
     }
 
     public String[] buscaAtletas() {
-        String[] atletas = {this.nome, String.valueOf(this.idade),
+        String[] atletas ={String.valueOf(this.id) ,this.nome, String.valueOf(this.idade),
             String.valueOf(this.peso), String.valueOf(this.altura),
             String.valueOf(this.getSexo()), this.faixa, this.pais, this.categoria,};
         return atletas;
@@ -67,7 +69,8 @@ public class Atletas {
     public boolean isSexo() {
         return sexo;
     }
-    public String getSexo(){
+
+    public String getSexo() {
         return sexo ? "Masculino" : "Feminino";
     }
 
@@ -144,4 +147,11 @@ public class Atletas {
         this.pais = pais;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

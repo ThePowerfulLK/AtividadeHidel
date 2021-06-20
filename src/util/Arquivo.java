@@ -48,30 +48,6 @@ public class Arquivo {
         return (Atletas[]) atletas.toArray(new Atletas[atletas.size()]);
         
         
-//        String conteudo = "";
-//        try {
-//            FileReader arquivo = new FileReader(Caminho);
-//            BufferedReader lerArquivo = new BufferedReader(arquivo);
-//            String linha = "";
-//            try {
-//                linha = lerArquivo.readLine();
-//                while (linha != null) {
-//                    conteudo += linha;
-//                    linha = lerArquivo.readLine();
-//                }
-//                arquivo.close();
-//
-//            } catch (IOException ex) {
-//                conteudo = "Erro: Não foi possível ler arquivo";
-//            }
-//        } catch (FileNotFoundException ex) {
-//            conteudo = "Erro: Arquivo não encontrado!";
-//        }
-//        if (conteudo.contains("Erro")) {
-//       return "";
-//        } else {
-//         return conteudo;
-//        }
     }
 
     public static boolean Write(String Caminho, String Texto) {
